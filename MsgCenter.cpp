@@ -7,7 +7,6 @@
 #include "MsgDefine.h"
 #include "MsgClient.h"
 
-#include "zmq/zmq.h"
 
 const char* MsgCenter::MESSAGE_CENTER_ENDPOINT = "inproc://message_center";
 

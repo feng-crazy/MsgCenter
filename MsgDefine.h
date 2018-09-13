@@ -1,4 +1,5 @@
 ﻿
+
 /******************************************************************************
 作者：	何登锋
 功能说明：
@@ -10,7 +11,8 @@
 #define _MSG_DEFINE_H
 
 #include <algorithm>
-#include "FrameCommon.h"
+
+#include "StandardHead.h"
 using namespace std;
 
 

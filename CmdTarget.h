@@ -15,8 +15,8 @@
 #include <string>
 #include <vector>
 
-#include "FrameCommon.h"
 #include "MsgDefine.h"
+#include "StandardHead.h"
 
 extern const int NONE_HANDLE; // 随机数据没有任何意义，不要追究为什么。
 

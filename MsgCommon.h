@@ -5,8 +5,8 @@
  *      Author: hdf_123
  */
 
-#ifndef MFRAME_H_
-#define MFRAME_H_
+#ifndef MSGCOMMON_H_
+#define MSGCOMMON_H_
 
 
 
@@ -19,8 +19,5 @@
 #include "Singleton.h"
 
 #include "MThread.h"
-#include "MZmq.h"
 
-#include "spdlog/spdlog.h"
-
-#endif /* MFRAME_H_ */
+#endif /* MSGCOMMON_H_ */

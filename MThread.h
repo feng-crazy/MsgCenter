@@ -1,4 +1,6 @@
 ﻿
+
+
 /******************************************************************************
 作者：	何登锋
 功能说明：
@@ -11,7 +13,7 @@
 #define M_THREAD_H
 
 #include "CmdTarget.h"
-#include "FrameCommon.h"
+#include "StandardHead.h"
 
 
 // MThread封装了线程创建

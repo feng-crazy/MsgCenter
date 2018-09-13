@@ -19,6 +19,6 @@ link_directories("/usr/local/lib")
 
 add_executable(test_bin main.cpp)
 
-target_link_libraries(test_bin MFrame zmq pthread dl)
+target_link_libraries(test_bin MsgCenter pthread dl)
 
 

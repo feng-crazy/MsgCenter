@@ -16,8 +16,8 @@
 
 #include <map>
 
-#include "FrameCommon.h"
 #include "Singleton.h"
+#include "StandardHead.h"
 
 
 class MsgClient;
