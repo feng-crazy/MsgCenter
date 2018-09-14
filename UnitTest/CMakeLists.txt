@@ -1,10 +1,5 @@
 ############################################################################
-#	  COPYRIGHT: 2009 Edan Instruments, Inc. All rights reserved
-#	PROJECTNAME: Mx
-#		VERSION:
-#	   FILENAME: CMakeLists.txt
-#		CREATED: 2010.07.12
-#		 AUTHOR: 柯利达
+#	AUTHOR: hedengfeng
 #	DESCRIPTION:
 ############################################################################
 

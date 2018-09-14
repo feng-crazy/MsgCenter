@@ -1,11 +1,6 @@
 ﻿/******************************************************************************
-	  COPYRIGHT: 2008 Edan Instruments, Inc. All rights reserved
-	PROJECTNAME: Mx
-	    VERSION: 1.0
-	   FILENAME: CmdTarget.cpp
-	    CREATED: 2008.12.09
-	     AUTHOR: ZhangHu
-	DESCRIPTION:
+作者：		何登锋
+功能说明:
 
 ******************************************************************************/
 #include "CmdTarget.h"

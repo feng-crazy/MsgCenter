@@ -50,7 +50,6 @@ ADD_DEFINITIONS(
 #-std=c++11 -Wno-deprecated-declarations -fpermissive -O2
 #)
 
-
 # 源文件列表
 set(SRCS CmdTarget.cpp MsgCenter.cpp MsgClient.cpp MThread.cpp)
 
