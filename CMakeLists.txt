@@ -4,16 +4,16 @@
 ############################################################################
 cmake_minimum_required (VERSION 2.6)
 
-MESSAGE(STATUS "This is BINARY dir " ${PROJECT_BINARY_DIR})
-MESSAGE(STATUS "This is SOURCE dir "${PROJECT_SOURCE_DIR})
+#MESSAGE(STATUS "This is BINARY dir " ${PROJECT_BINARY_DIR})
+#MESSAGE(STATUS "This is SOURCE dir "${PROJECT_SOURCE_DIR})
 
 PROJECT(MsgCenter)
 
 # 目标程序的运行环境
 set(CMAKE_SYSTEM_NAME Linux)
 
-SET(CMAKE_C_COMPILER "/usr/bin/x86_64-linux-gnu-gcc")
-SET(CMAKE_CXX_COMPILER "/usr/bin/x86_64-linux-gnu-g++")
+set(CMAKE_C_COMPILER "/usr/bin/x86_64-linux-gnu-gcc")
+set(CMAKE_CXX_COMPILER "/usr/bin/x86_64-linux-gnu-g++")
 set(STRIP_TOOL /usr/bin/x86_64-linux-gnu-strip)
 
 # 交叉编译时搜索头文件和库的路径
@@ -25,7 +25,7 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
-SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
 set(CMAKE_SKIP_RPATH TRUE)
 
@@ -39,10 +39,10 @@ link_directories(${PROJECT_BINARY_DIR}/lib)
 link_directories("/usr/local/lib")
 
 
-#SET(CMAKE_CXX_FLAGS "-g -Wall")
-#SET(CMAKE_C_FLAGS "-g -Wall")
+#set(CMAKE_CXX_FLAGS "-g -Wall")
+#set(CMAKE_C_FLAGS "-g -Wall")
 
-ADD_DEFINITIONS(
+add_definitions(
 -std=c++11 -Wno-deprecated-declarations -fpermissive -g -ggdb -Wno-psabi -rdynamic -ldl
 )
 

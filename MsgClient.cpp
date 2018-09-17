@@ -6,8 +6,6 @@
 #include "MsgClient.h"
 #include "MsgCenter.h"
 #include "CmdTarget.h"
-#include <algorithm>
-
 
 /******************************************************************************
 作者: 何登锋
@@ -406,7 +404,7 @@ MsgClient::MsgClient()
 //	assert(rc == 0);
 
 
-	if(msg_center->register_client(this_thread::get_id(), *this) == false)
+  if ( !msg_center->register_client(this_thread::get_id(), *this))
 	{
 		printf("Register client to message center is failed!\n");
 	}
