@@ -32,3 +32,9 @@
 *.app
 build
 cmake-build-debug
+
+# Intellij
+*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/libraries
