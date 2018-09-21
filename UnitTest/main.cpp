@@ -7,6 +7,9 @@
 
 
 #include <signal.h>
+#include <execinfo.h>
+#include <dlfcn.h>
+#include <cxxabi.h>
 
 #include "../MsgCommon.h"
 //#include "TestMsgTarget1.h"
@@ -110,9 +113,94 @@ public:
 	}
 };
 
+void stack_trace(const char *ptr)
+{
+    const int max_depth = 32;
+    void *trace[max_depth];
+    int stack_depth = backtrace(trace, max_depth);
+    char log_str[100];   // 每条错误信息不能超过这个长度
+
+    flockfile(stdout);
+
+    ////////////////////////////////////////////////////////
+    // 开始搜集错误信息
+    ////////////////////////////////////////////////////////
+    time_t t = time(NULL);
+    strftime(log_str, sizeof(log_str), "\n\n%Y-%m-%d %H:%M:%S\n", localtime(&t));
+    printf("%s", log_str);
+
+    for(int i=0; i<stack_depth; i++)
+    {
+        Dl_info dlinfo;
+        if(!dladdr(trace[i], &dlinfo))
+        {
+            snprintf(log_str, sizeof(log_str), "@ %p\n", trace[i]);
+            printf("%s", log_str);
+            continue;
+        }
+
+        const char *symname = dlinfo.dli_sname;
+
+        int status;
+        char *demangled = __cxxabiv1::__cxa_demangle(symname, NULL, NULL, &status);
+        if((status == 0) && demangled)
+        {
+            symname = demangled;
+        }
+
+        if(symname)
+        {
+            snprintf(log_str, sizeof(log_str), "@ %s\n", symname);
+            printf("%s", log_str);
+        }
+        else
+        {
+            snprintf(log_str, sizeof(log_str), "@ %p\n", trace[i]);
+            printf("%s", log_str);
+        }
+
+        if(demangled)
+        {
+            free(demangled);
+        }
+    }
+
+    printf("%s", ptr);
+
+    funlockfile(stdout);
+}
+
+void error_handler(int sig)
+{
+
+
+    string s("signal is = ");
+    s += to_string(sig);
+
+    stack_trace(s.c_str());
+
+    signal(sig, SIG_DFL);
+    raise(sig);
+
+}
+
 
 int main()
 {
+    signal(SIGINT, error_handler);
+    signal(SIGQUIT, error_handler);
+    signal(SIGILL, error_handler);
+    signal(SIGTRAP, error_handler);
+    signal(SIGABRT, error_handler);
+    signal(SIGIOT, error_handler);
+    signal(SIGBUS, error_handler);
+    signal(SIGFPE, error_handler);
+    signal(SIGKILL, error_handler);
+    signal(SIGSEGV, error_handler);
+    signal(SIGTERM, error_handler);
+    signal(SIGSTKFLT, error_handler);
+    signal(SIGPIPE, SIG_IGN);
+
 
 	TestMain test;
 
